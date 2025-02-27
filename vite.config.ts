@@ -3,7 +3,7 @@
  * @Description:
  * @Date: 2025-02-21 11:18:20
  * @LastEditors: along
- * @LastEditTime: 2025-02-21 15:24:21
+ * @LastEditTime: 2025-02-27 14:33:22
  * @FilePath: /vue-tool-web/vite.config.ts
  */
 import path from "node:path";
@@ -29,28 +29,24 @@ export default defineConfig(({ mode }) => {
       AutoImport({
         include: [/\.[tj]sx?$/, /\.vue$/, /\.vue\?vue/],
         imports: ["vue", "pinia", "vue-router"],
-        // 调整自动引入的文件位置
         dts: "./auto-import.d.ts",
-        // 解决自动引入eslint报错问题 需要在eslintrc的extend选项中引入
         eslintrc: {
           enabled: true,
-          // 配置文件的位置
           filepath: "./.eslintrc-auto-import.json",
           globalsPropValue: true,
         },
-        // 自动导入element
         resolvers: [AntDesignVueResolver()],
       }),
       Components({
         resolvers: [AntDesignVueResolver({ importStyle: "less" })],
       }),
       commpressPlugin({
-        verbose: true, // 默认即可
-        disable: false, // 开启压缩(不禁用)，默认即可
-        deleteOriginFile: false, // 删除源文件
-        threshold: 1024, // 压缩前最小文件大小
-        algorithm: "gzip", // 压缩算法
-        ext: ".gz", // 文件类型
+        verbose: true,
+        disable: false,
+        deleteOriginFile: false,
+        threshold: 1024,
+        algorithm: "gzip",
+        ext: ".gz",
       }),
       splitVendorChunkPlugin(),
       lazyImport({

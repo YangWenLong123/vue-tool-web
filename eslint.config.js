@@ -3,7 +3,7 @@
  * @Description:
  * @Date: 2025-02-21 14:41:17
  * @LastEditors: along
- * @LastEditTime: 2025-02-21 15:22:49
+ * @LastEditTime: 2025-02-27 14:36:13
  * @FilePath: /vue-tool-web/eslint.config.js
  */
 import globals from "globals";
@@ -33,6 +33,9 @@ export default [
           argsIgnorePattern: "^_",
         },
       ],
+      'vue/multi-word-component-names': ['error', {
+        "ignores": ['index'] // 允许 index 作为组件名
+      }]
     },
     languageOptions: {
       globals: {
